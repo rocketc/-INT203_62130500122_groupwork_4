@@ -50,11 +50,11 @@
 
     <!-- <h1>My favorite<span class="mx-2 text-3xl">({{countDone}})</span></h1> -->
 
-    <div id="gallery" class="max-w-xl ml-24 mr-28 my-10 pt-2 space-y-3 text-center">
+    <div  class="max-w-xl ml-24 mr-28 my-10 pt-2 space-y-3 text-center">
       <ul>
-        <li v-for="(rabbit, index) in rabbits " class="pb-10 {done: rabbit.done}"></li>
+  <!--     <li v-for="(rabbit, index) in rabbits " class="pb-10 {done: rabbit.done}"></li>--> 
         <div v-for="(rabbit,index) in filterList">
-          <a v-on:click="expandImage = true,toggleDone(index)" href="#">
+          <a v-on:click="expandImage = true,returnIndex(index)" href="#">
             <img :src="rabbit.img" width="550" class="rounded-lg h-64" />
           </a>
           <p class="text-lg font-semibold">{{rabbit.title}}</p>
@@ -67,6 +67,18 @@
           
         </div>
       </ul>
+
+      <div v-if="expandImage" class="bg-black ml-auto mr-auto h-full w-full">
+        <img
+          v-bind:src="copyGallery[indexGallery].img"
+          class="h-auto w-auto mr-auto ml-auto"
+        />
+        <span
+          @click="expandImage=false"
+          class="bg-yellow-300 mr-0 h-50 w-auto"
+          >x close</span
+        >
+      </div>
     </div>
 
 <!--     

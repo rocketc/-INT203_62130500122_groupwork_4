@@ -19,6 +19,8 @@ const app = {
         },
         toggleDone(index){
             this.rabbits[index].done = !this.rabbits[index].done
+        },returnIndex(index){
+        this.indexGallery=index;
         }
     },
     computed: {
